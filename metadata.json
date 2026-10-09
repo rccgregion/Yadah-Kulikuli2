@@ -1,0 +1,8 @@
+{
+  "name": "Aura Studio",
+  "description": "Yadah\u0027s Crunchies — Premium Crunchy Kulikuli (Spicy Peanut Snack) crafted in Lokoja, Kogi State, Nigeria. Crunchy. Spicy. Irresistible.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
