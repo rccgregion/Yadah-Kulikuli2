@@ -1,3 +1,5 @@
+import { YADAH_IMAGES } from '../assets/yadahImages';
+
 export interface ProductSize {
   id: string;
   sizeName: string;
@@ -62,7 +64,7 @@ export const PRODUCT_SIZES: ProductSize[] = [
     weight: "250g",
     weightGrams: 250,
     priceNgn: 1000,
-    image: "/src/assets/images/yadah_signature_pouch_front_back_1791568597763.jpg",
+    image: YADAH_IMAGES.signaturePouch,
     description: "Our signature flagship pouch. Generously filled with authentic flat peppered kulikuli crisps, seasoned to a bold, irresistible crunch.",
     idealFor: "Desk fuel, movie nights, companion for chilled soaked garri, weekend sharing",
     badge: "Signature Flagship",
@@ -74,7 +76,7 @@ export const PRODUCT_SIZES: ProductSize[] = [
     weight: "150g",
     weightGrams: 150,
     priceNgn: 500,
-    image: "/src/assets/images/yadah_three_sizes_lineup_1791568558953.jpg",
+    image: YADAH_IMAGES.threeSizes,
     description: "The ideal personal on-the-go pocket snack. Perfectly portioned, crispy, peppered, and ready for commutes, study sessions, or quick energy boosts.",
     idealFor: "Office desk snack, school bags, car rides, travel pack",
     badge: "Popular Quick Grab"
@@ -85,7 +87,7 @@ export const PRODUCT_SIZES: ProductSize[] = [
     weight: "400g",
     weightGrams: 400,
     priceNgn: 1500,
-    image: "/src/assets/images/yadah_hero_banner_1791568533893.jpg",
+    image: YADAH_IMAGES.heroBanner,
     description: "Maximum crunch for true kulikuli enthusiasts, large families, and gatherings. Heavy-duty airtight resealable zip ensures prolonged crunch.",
     idealFor: "Family sharing, festive parties, corporate hospitality trays, gift hampers",
     badge: "Best Value"

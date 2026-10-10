@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PageType } from '../components/yadah/Navbar';
 import { WHOLESALE_TIERS, WholesaleTier } from '../data/yadahData';
+import { YADAH_IMAGES } from '../assets/yadahImages';
 import { useYadahCart } from '../context/YadahCartContext';
 import {
   Boxes,
@@ -37,7 +38,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
       title: `${tier.name}`,
       weight: tier.weight,
       priceNgn: tier.cartonPriceNgn,
-      image: '/src/assets/images/yadah_hero_banner_1791568533893.jpg',
+      image: YADAH_IMAGES.heroBanner,
       isWholesale: true,
     });
   };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageType } from '../components/yadah/Navbar';
 import { YADAH_BRAND, KEY_ATTRIBUTES, PRODUCT_SIZES } from '../data/yadahData';
+import { YADAH_IMAGES } from '../assets/yadahImages';
 import { useYadahCart } from '../context/YadahCartContext';
 import {
   ShoppingBag,
@@ -9,7 +10,6 @@ import {
   Flame,
   MapPin,
   Sparkles,
-  ShieldCheck,
   Phone,
 } from 'lucide-react';
 
@@ -24,7 +24,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
   return (
     <div className="space-y-16 sm:space-y-24 pb-20">
-      {/* 1. HERO SECTION FEATURING THE UPLOADED PACKAGING SET IMAGE */}
+      {/* 1. HERO SECTION FEATURING THE PACKAGING SET IMAGE */}
       <section
         className={`relative pt-24 sm:pt-28 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 border-b transition-colors duration-300 ${
           isDark
@@ -37,7 +37,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             {/* Left Column: Brand & Hero Value Proposition */}
             <div className="lg:col-span-6 space-y-5 sm:space-y-6 text-center lg:text-left">
               {/* Highlight Tag */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-900/10 border border-[#C26E42]/30 text-xs font-semibold uppercase tracking-wider text-[#C26E42]">
+              <div
+                className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold uppercase tracking-wider ${
+                  isDark
+                    ? 'bg-red-950/40 border-[#C26E42]/40 text-[#E69165]'
+                    : 'bg-[#C26E42]/10 border-[#C26E42]/30 text-[#A85830]'
+                }`}
+              >
                 <Flame className="w-3.5 h-3.5 text-[#C26E42] fill-current" />
                 <span>Authentic Nigerian Flat Kulikuli · 250g Pouch</span>
               </div>
@@ -57,14 +63,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               {/* Description */}
               <p
                 className={`text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 ${
-                  isDark ? 'text-stone-300' : 'text-[#5E5045]'
+                  isDark ? 'text-stone-300' : 'text-[#4A3D33]'
                 }`}
               >
                 Crafted by Yadah’s Crunchies in Lokoja, Kogi State from carefully selected groundnuts, sun-dried chili peppers, and authentic local spices. 100% natural, rich in plant protein, and pressed thin for that dependable shatter-crunch.
               </p>
 
-              {/* Action Buttons */}
+              {/* Action Buttons - High contrast guaranteed in light & dark modes */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
+                {/* PRIMARY CTA: Crystal clear high-contrast terracotta button with solid white bold text */}
                 <button
                   onClick={() => {
                     addToCart({
@@ -75,22 +82,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                       image: signatureProduct.image,
                     });
                   }}
-                  className="aura-terracotta-btn w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-white text-xs sm:text-sm font-semibold cursor-pointer shadow-lg shadow-[#C26E42]/25"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full text-white bg-gradient-to-r from-[#C26E42] to-[#A85830] hover:from-[#CF774A] hover:to-[#B25D34] text-xs sm:text-sm font-bold cursor-pointer shadow-lg shadow-[#C26E42]/35 border border-[#C26E42]/40 transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>Order 250g Signature — ₦1,000</span>
+                  <ShoppingBag className="w-4 h-4 text-white" />
+                  <span className="text-white font-bold tracking-wide">
+                    Order 250g Signature — ₦1,000
+                  </span>
                 </button>
 
+                {/* SECONDARY CTA */}
                 <button
                   onClick={() => onNavigate('products')}
-                  className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                  className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer border ${
                     isDark
-                      ? 'bg-stone-800 hover:bg-stone-700 text-stone-100 border border-stone-700'
-                      : 'bg-white hover:bg-stone-50 text-[#241D17] border border-stone-200'
+                      ? 'bg-stone-800 hover:bg-stone-700 text-stone-100 border-stone-700'
+                      : 'bg-white hover:bg-stone-50 text-stone-900 border-stone-300 shadow-xs'
                   }`}
                 >
                   <span>Explore All Sizes</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-[#C26E42]" />
                 </button>
               </div>
 
@@ -123,7 +133,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* Right Column: Hero Showcase of the Uploaded Packaging Set */}
+            {/* Right Column: Hero Showcase of the Packaging Set */}
             <div className="lg:col-span-6 flex justify-center">
               <div className="relative w-full max-w-lg">
                 {/* Luminous Warm Floor Glow */}
@@ -133,16 +143,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <div
                   className={`overflow-hidden rounded-3xl sm:rounded-[32px] border p-2 sm:p-3 shadow-2xl transition-all duration-300 ${
                     isDark
-                      ? 'bg-stone-900/80 border-stone-800 shadow-black/60'
-                      : 'bg-white/85 border-white/80 shadow-[#4a3928]/15'
+                      ? 'bg-stone-900/90 border-stone-800 shadow-black/60'
+                      : 'bg-white/95 border-stone-200/90 shadow-[#4a3928]/15'
                   }`}
                 >
                   <div className="relative aspect-[16/10] sm:aspect-[4/3] rounded-2xl sm:rounded-[26px] overflow-hidden bg-[#241D17]">
                     <img
-                      src="/src/assets/images/yadah_packaging_set.jpg"
+                      src={YADAH_IMAGES.packagingSet}
                       alt="Yadah’s Crunchies Kulikuli Packaging Set - Front and Back Pouch"
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover sm:object-contain object-center"
+                      onError={(e) => {
+                        // Fallback to static public image if needed
+                        (e.currentTarget as HTMLImageElement).src = '/images/yadah_packaging_set.jpg';
+                      }}
                     />
 
                     {/* Badge Overlay */}
@@ -228,7 +242,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               className={`p-6 sm:p-7 rounded-3xl border shadow-xs space-y-3.5 transition-all ${
                 isDark
                   ? 'bg-stone-900/90 border-stone-800 hover:border-stone-700'
-                  : 'bg-white/90 border-stone-200/80 hover:shadow-md'
+                  : 'bg-white/95 border-stone-200/90 hover:shadow-md'
               }`}
             >
               <div className="text-3xl">{attr.symbol}</div>
@@ -306,6 +320,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     alt={prod.sizeName}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = '/images/yadah_packaging_set.jpg';
+                    }}
                   />
                 </div>
 
@@ -391,18 +408,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
             <div className="rounded-3xl overflow-hidden border border-stone-200/60 shadow-md">
               <img
-                src="/src/assets/images/yadah_kulikuli_crispy_bowl_1791568546489.jpg"
+                src={YADAH_IMAGES.crispyBowl}
                 alt="Crispy Bowl of Peppered Kulikuli"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = '/images/yadah_kulikuli_crispy_bowl_1791568546489.jpg';
+                }}
               />
             </div>
             <div className="rounded-3xl overflow-hidden border border-stone-200/60 shadow-md mt-6">
               <img
-                src="/src/assets/images/yadah_lokoja_production_1791568569856.jpg"
+                src={YADAH_IMAGES.lokojaProduction}
                 alt="Lokoja Production Workshop"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = '/images/yadah_lokoja_production_1791568569856.jpg';
+                }}
               />
             </div>
           </div>

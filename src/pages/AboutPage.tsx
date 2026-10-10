@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageType } from '../components/yadah/Navbar';
 import { YADAH_BRAND, KEY_ATTRIBUTES } from '../data/yadahData';
+import { YADAH_IMAGES } from '../assets/yadahImages';
 import { MapPin, Sparkles, ArrowRight } from 'lucide-react';
 import { useYadahCart } from '../context/YadahCartContext';
 
@@ -41,10 +42,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-7 rounded-3xl overflow-hidden border border-stone-200/60 shadow-md aspect-[16/10]">
             <img
-              src="/src/assets/images/yadah_lokoja_production_1791568569856.jpg"
+              src={YADAH_IMAGES.lokojaProduction}
               alt="Yadah's Crunchies Production Workshop in Lokoja, Kogi State"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = '/images/yadah_lokoja_production_1791568569856.jpg';
+              }}
             />
           </div>
 
